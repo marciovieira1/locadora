@@ -1,0 +1,30 @@
+﻿@inherits ModelWebViewPage<Login>
+@{
+    ViewBag.Title = "Login de Usuários";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout_Login.cshtml";
+}
+<div class="row">
+    @using (Html.BeginForm(MVC.Admin.Home.Login(), FormMethod.Post))
+    {
+
+        <div class="col-lg-12">
+            @this.Label(x => x.Username).Class("control-label").Value("Login:")
+            @this.TextBox(x => x.Username).Class("required form-control")
+            @Html.ValidationMessageFor(x => x.Username)
+        </div>
+        <div class="col-lg-12">
+            @this.Label(x => x.Password).Class("control-label").Value("Senha:")
+            @this.Password(x => x.Password).Class("required form-control")
+            @Html.ValidationMessageFor(x => x.Password)
+        </div>
+
+        <div class="col-md-12 text-center" style="margin-top: 15px;">
+            <button type="button" class="btn btn-info btn-lg" onclick="location.href='@Url.Action(MVC.Home.Index())'">
+                <i class="fas fa-plus"></i> Sair
+            </button>
+            <button type="submit" class="btn btn-primary btn-lg">
+                <i class="far fa-sign-out-alt"></i> Acessar
+            </button>
+        </div>
+    }
+</div>

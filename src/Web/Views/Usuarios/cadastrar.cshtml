@@ -1,0 +1,11 @@
+﻿@inherits ModelWebViewPage<TUser>
+@{
+    ViewBag.Title = "Usuários - Cadastrar";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+<h2 class="titulo-form">
+    Usuários - Cadastrar
+</h2>
+
+@Html.Partial("_form", Model)
+

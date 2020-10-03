@@ -1,0 +1,76 @@
+/* ==========================================================================
+   Author: Marcio Vieira 
+   ========================================================================== */
+
+* {
+    font-family: 'Montserrat', sans-serif;
+}
+
+body {
+    padding-top: 60px;
+    padding-bottom: 40px;
+}
+
+footer {
+    padding: 20px;
+    background: #3e06cc;
+    color: white;
+}
+
+.footer-fix {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.card {
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+    transition: 0.3s;
+    border-radius: 5px;
+    padding: 15px;
+    width: 50%;
+}
+
+form {
+    width: 50%;
+    margin: 0 auto;
+    padding: 25px;
+    box-shadow: 0 4px 8px 0 rgba(0,0,0,0.2);
+}
+
+input, textarea {
+    width: 100%;
+    padding: 8px;
+    margin-bottom: 1em;
+    font: 1em MontSerrat
+}
+
+input, select {
+    margin-bottom: 1em;
+    font: 1em MontSerrat
+}
+
+.box-numerico {
+    margin-bottom: 1em;
+    font: 1em MontSerrat;
+    width: 25%;
+}
+
+label {
+    font-weight: bold;
+}
+
+h2.titulo-form {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.navbar-color {
+    background: #3e06cc; 
+    box-shadow: 0 4px 15px 0 rgba(0,0,0,0.2);
+}
+.btn_login_logout{
+    display:flex;
+    align-items:end;
+}
