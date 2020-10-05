@@ -2,7 +2,7 @@
 <div class="row">
     @using (Html.BeginForm())
     {
-        
+
         <div class="col-lg-12">
             @this.Label(x => x.Name).Class("control-label").Value("Nome:")
             @this.TextBox(x => x.Name).Class("required form-control").Autofocus(true)
@@ -13,6 +13,11 @@
             @this.AutoSelect(x => x.EnumProfileUser).Class("required form-control").FirstOption("", "Selecione uma opção")
             @Html.ValidationMessageFor(x => x.EnumProfileUser)
         </div>
+        <div class="col-lg-12">
+            @this.Label(x => x.Login).Class("control-label").Value("Login:")
+            @this.TextBox(x => x.Login).Class("required form-control").Autofocus(true)
+            @Html.ValidationMessageFor(x => x.Login)
+        </div> 
         if ((bool)ViewBag.MostraSenha)
         {
             <div class="col-lg-12">

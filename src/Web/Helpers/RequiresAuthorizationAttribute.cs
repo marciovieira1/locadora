@@ -14,7 +14,7 @@ namespace Locadora.Web.Helpers
         public override void OnActionExecuting(ActionExecutingContext filterContext)
         {
             var uri = filterContext.HttpContext.Request.Url.AbsoluteUri;
-            SecurityContext.Do.Init(() => filterContext.HttpContext.User.Identity);
+            SecurityContext.Do.Init(() => filterContext.HttpContext.User.Identity, uri.GetSubdomain());
 
             var security = SecurityContext.Do;
             if (security == null)
@@ -39,12 +39,8 @@ namespace Locadora.Web.Helpers
             else
                 rUrl = filterContext.HttpContext.Request.Url.AbsoluteUri.Replace("/Web_deploy", "");
 
-            if (rUrl.Contains("painel"))
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "Login" }, { "Area", "Painel" }, { "returnUrl", rUrl } });
-            else if (rUrl.Contains("pdv"))
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "Login" }, { "Area", "Pdv" }, { "returnUrl", rUrl } });
-            else if (rUrl.Contains("ev"))
-                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "Login" }, { "Area", "Ev" }, { "returnUrl", rUrl } });
+            if (rUrl.Contains("Admin"))
+                filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "Login" }, { "Area", "Admin" }, { "returnUrl", rUrl } });
             else
                 filterContext.Result = new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Clientes" }, { "Action", "Login" }, { "Area", "" }, { "returnUrl", rUrl } });
         }
@@ -61,14 +57,10 @@ namespace Locadora.Web.Helpers
 
         private static RedirectToRouteResult NotAuthorizated(string url)
         {
-            if (url.Contains("painel"))
-                return new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "acesso-negado" }, { "Area", "Painel" } });
-            else if (url.Contains("pdv"))
-                return new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "acesso-negado" }, { "Area", "Pdv" } });
-            else if (url.Contains("ev"))
-                return new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "conta-desativada" }, { "Area", "Ev" } });
+            if (url.Contains("Admin"))
+                return new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Home" }, { "Action", "Login" }, { "Area", "Admin" } });
             else
-                return new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Clientes" }, { "Action", "Login" }, { "Area", "Loja" } });
+                return new RedirectToRouteResult(new RouteValueDictionary { { "Controller", "Clientes" }, { "Action", "Login" }, { "Area", "Clientes" } });
         }
 
 

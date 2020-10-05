@@ -16,6 +16,7 @@ namespace Locadora.Services
             var user = TUser.Load(model.Id);
             user.Name = model.Name;
             user.EnumProfileUser = model.EnumProfileUser;
+            user.Login = model.Login;
             user.Update();
         }
         public byte[] HashPassword(string password)

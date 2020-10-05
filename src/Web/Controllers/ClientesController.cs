@@ -156,7 +156,7 @@ namespace Locadora.Web.Controllers
         {
             List<TMovie> filmes;
             var client = (TClient)ViewBag.Cliente;
-            var preferencias = client.TPreferences.Select(x => x.Category.Id).ToList(); // Select id_category from t_preferences where id_clientes = 94
+            var preferencias = client.TPreferences.Select(x => x.Category.Id).ToList();
 
             if (preferencias.Count != 0)
             {

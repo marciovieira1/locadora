@@ -26,6 +26,9 @@
                     <th scope="col" class="header">
                         Perfil
                     </th>
+                    <th scope="col" class="header">
+                        Login
+                    </th>
                     <th scope="col" class="header text-center">
                         Ação
                     </th>
@@ -42,6 +45,9 @@
                             </td>
                             <td>
                                 @(item.EnumProfileUser)
+                            </td>
+                            <td>
+                                @item.Login
                             </td>
                             <td class="text-center">
                                 <a class="btn btn-primary btn-xs" data-toggle="tooltip" title="Editar"

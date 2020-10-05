@@ -51,7 +51,33 @@ namespace Locadora
                 _isAuthenticated = false;
             return this;
         }
+        public SecurityContext Init(Func<IIdentity> identityGetter, Subdomain subdomain)
+        {
+            _identityGetter = identityGetter;
+            _isAuthenticated = TryGet(x => x.IsAuthenticated, false);
 
+            var username = TryCast(x => x.Name, string.Empty);
+            if (_isAuthenticated && !string.IsNullOrEmpty(username))
+            {
+                if (subdomain == Subdomain.Admin)
+                {
+                    var user = TUser.FindByUsername(username);
+                    if (user != null)
+                        _user = new UserSecurity(user, subdomain);
+                }
+                else
+                {
+                    var model = TClient.FindByUsername(username);
+                    if (model != null)
+                        _user = new UserSecurity(model);
+                }
+            }
+            else
+                _user = null;
+            if (_user == null)
+                _isAuthenticated = false;
+            return this;
+        }
         public SecurityContext Init(SimpleContext context)
         {
             if (context != null && context.Username != null)
