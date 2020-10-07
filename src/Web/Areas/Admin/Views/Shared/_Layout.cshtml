@@ -38,18 +38,21 @@
                 <div class="nav-collapse">
                     <ul class="nav">
                         <li><a class="nav-link" href="@Url.Action(MVC.Home.Index())"><i class="fas fa-home"></i></a></li>
-                        <li><a href="@Url.Action(MVC.Filmes.Index())">Filmes</a></li>
-                        <li><a href="@Url.Action(MVC.Generos.Index())">Gêneros</a></li>
-                        <li><a href="@Url.Action(MVC.Clientes.Index())">Clientes</a></li>
-                        <li><a href="@Url.Action(MVC.Usuarios.Index())">Usuários</a></li>
+                        <li><a href="@Url.Action(MVC.Admin.Filmes.Index())">Filmes</a></li>
+                        <li><a href="@Url.Action(MVC.Admin.Generos.Index())">Gêneros</a></li>
+                        <li><a href="@Url.Action(MVC.Admin.Clientes.Index())">Clientes</a></li>
+                        <li><a href="@Url.Action(MVC.Admin.Usuarios.Index())">Usuários</a></li>
                     </ul>
                 </div>
             </div>
         </div>
-        @*<a class="btn btn-danger btn-lg btn_login_logout" data-toggle="tooltip" title="Sair"
-           href="@Url.Action(MVC.Clientes.Logout())">
-            <i class="fas fa-sign-out-alt"></i> Sair
-        </a>*@
+        @if (ViewBag.Usuario != null)
+        {
+            <a class="btn btn-danger btn-lg btn_login_logout" data-toggle="tooltip" title="Sair"
+               href="@Url.Action(MVC.Admin.Home.Logout())">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        }
     </div>
     <div class="container">
         @RenderBody()

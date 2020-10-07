@@ -8,7 +8,7 @@ using System.Linq;
 using System.Web;
 using System.Web.Mvc;
 
-namespace Locadora.Web.Controllers
+namespace Locadora.Web.Areas.Admin.Controllers
 {
     public partial class GenerosController : BaseController
     {

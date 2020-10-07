@@ -31,12 +31,9 @@ public static partial class MVC
     public static AdminClass Admin { get { return s_Admin; } }
     public static Locadora.Web.Controllers.BaseController Base = new Locadora.Web.Controllers.T4MVC_BaseController();
     public static Locadora.Web.Controllers.ClientesController Clientes = new Locadora.Web.Controllers.T4MVC_ClientesController();
-    public static Locadora.Web.Controllers.FilmesController Filmes = new Locadora.Web.Controllers.T4MVC_FilmesController();
-    public static Locadora.Web.Controllers.GenerosController Generos = new Locadora.Web.Controllers.T4MVC_GenerosController();
     public static Locadora.Web.Controllers.HomeController Home = new Locadora.Web.Controllers.T4MVC_HomeController();
     public static Locadora.Web.Controllers.MailController Mail = new Locadora.Web.Controllers.T4MVC_MailController();
     public static Locadora.Web.Controllers.SystemController System = new Locadora.Web.Controllers.T4MVC_SystemController();
-    public static Locadora.Web.Controllers.UsuariosController Usuarios = new Locadora.Web.Controllers.T4MVC_UsuariosController();
     public static T4MVC.SharedController Shared = new T4MVC.SharedController();
 }
 
@@ -47,7 +44,11 @@ namespace T4MVC
     {
         public readonly string Name = "Admin";
         public Locadora.Web.Areas.Admin.Controllers.BaseController Base = new Locadora.Web.Areas.Admin.Controllers.T4MVC_BaseController();
+        public Locadora.Web.Areas.Admin.Controllers.ClientesController Clientes = new Locadora.Web.Areas.Admin.Controllers.T4MVC_ClientesController();
+        public Locadora.Web.Areas.Admin.Controllers.FilmesController Filmes = new Locadora.Web.Areas.Admin.Controllers.T4MVC_FilmesController();
+        public Locadora.Web.Areas.Admin.Controllers.GenerosController Generos = new Locadora.Web.Areas.Admin.Controllers.T4MVC_GenerosController();
         public Locadora.Web.Areas.Admin.Controllers.HomeController Home = new Locadora.Web.Areas.Admin.Controllers.T4MVC_HomeController();
+        public Locadora.Web.Areas.Admin.Controllers.UsuariosController Usuarios = new Locadora.Web.Areas.Admin.Controllers.T4MVC_UsuariosController();
         public T4MVC.Admin.SharedController Shared = new T4MVC.Admin.SharedController();
     }
 }

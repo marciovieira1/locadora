@@ -29,6 +29,9 @@
     <property name="IsActive">
       <column name="is_active" length="1" sql-type="bit" />
     </property>
+    <property name="Value">
+      <column name="value" length="8" sql-type="float" />
+    </property>
 
 
     <set name="TItens" inverse="true">

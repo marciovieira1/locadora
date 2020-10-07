@@ -23,15 +23,15 @@ using System.Web.Mvc.Ajax;
 using System.Web.Mvc.Html;
 using System.Web.Routing;
 using T4MVC;
-namespace Locadora.Web.Controllers
+namespace Locadora.Web.Areas.Admin.Controllers
 {
-    public partial class UsuariosController
+    public partial class ClientesController
     {
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UsuariosController() { }
+        public ClientesController() { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        protected UsuariosController(Dummy d) { }
+        protected ClientesController(Dummy d) { }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         protected RedirectToRouteResult RedirectToAction(ActionResult result)
@@ -71,15 +71,21 @@ namespace Locadora.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Excluir);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ListarGenero()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ListarGenero);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-        public UsuariosController Actions { get { return MVC.Usuarios; } }
+        public ClientesController Actions { get { return MVC.Admin.Clientes; } }
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Area = "";
+        public readonly string Area = "Admin";
         [GeneratedCode("T4MVC", "2.0")]
-        public readonly string Name = "Usuarios";
+        public readonly string Name = "Clientes";
         [GeneratedCode("T4MVC", "2.0")]
-        public const string NameConst = "Usuarios";
+        public const string NameConst = "Clientes";
         [GeneratedCode("T4MVC", "2.0")]
         static readonly ActionNamesClass s_actions = new ActionNamesClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -91,6 +97,8 @@ namespace Locadora.Web.Controllers
             public readonly string Cadastrar = "Cadastrar";
             public readonly string Editar = "Editar";
             public readonly string Excluir = "Excluir";
+            public readonly string ListarGenero = "ListarGenero";
+            public readonly string Logout = "Logout";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -100,6 +108,8 @@ namespace Locadora.Web.Controllers
             public const string Cadastrar = "Cadastrar";
             public const string Editar = "Editar";
             public const string Excluir = "Excluir";
+            public const string ListarGenero = "ListarGenero";
+            public const string Logout = "Logout";
         }
 
 
@@ -129,6 +139,14 @@ namespace Locadora.Web.Controllers
             public readonly string id = "id";
             public readonly string diff = "diff";
         }
+        static readonly ActionParamsClass_ListarGenero s_params_ListarGenero = new ActionParamsClass_ListarGenero();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ListarGenero ListarGeneroParams { get { return s_params_ListarGenero; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ListarGenero
+        {
+            public readonly string id = "id";
+        }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ViewsClass Views { get { return s_views; } }
@@ -141,22 +159,24 @@ namespace Locadora.Web.Controllers
             {
                 public readonly string _excluir = "_excluir";
                 public readonly string _form = "_form";
+                public readonly string _listar_genero = "_listar-genero";
                 public readonly string cadastrar = "cadastrar";
                 public readonly string editar = "editar";
                 public readonly string Index = "Index";
             }
-            public readonly string _excluir = "~/Views/Usuarios/_excluir.cshtml";
-            public readonly string _form = "~/Views/Usuarios/_form.cshtml";
-            public readonly string cadastrar = "~/Views/Usuarios/cadastrar.cshtml";
-            public readonly string editar = "~/Views/Usuarios/editar.cshtml";
-            public readonly string Index = "~/Views/Usuarios/Index.cshtml";
+            public readonly string _excluir = "~/Areas/Admin/Views/Clientes/_excluir.cshtml";
+            public readonly string _form = "~/Areas/Admin/Views/Clientes/_form.cshtml";
+            public readonly string _listar_genero = "~/Areas/Admin/Views/Clientes/_listar-genero.cshtml";
+            public readonly string cadastrar = "~/Areas/Admin/Views/Clientes/cadastrar.cshtml";
+            public readonly string editar = "~/Areas/Admin/Views/Clientes/editar.cshtml";
+            public readonly string Index = "~/Areas/Admin/Views/Clientes/Index.cshtml";
         }
     }
 
     [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
-    public partial class T4MVC_UsuariosController : Locadora.Web.Controllers.UsuariosController
+    public partial class T4MVC_ClientesController : Locadora.Web.Areas.Admin.Controllers.ClientesController
     {
-        public T4MVC_UsuariosController() : base(Dummy.Instance) { }
+        public T4MVC_ClientesController() : base(Dummy.Instance) { }
 
         [NonAction]
         partial void IndexOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
@@ -181,10 +201,10 @@ namespace Locadora.Web.Controllers
         }
 
         [NonAction]
-        partial void CadastrarOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Locadora.Domain.TUser model);
+        partial void CadastrarOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Locadora.Domain.TClient model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Cadastrar(Locadora.Domain.TUser model)
+        public override System.Web.Mvc.ActionResult Cadastrar(Locadora.Domain.TClient model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Cadastrar);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -205,10 +225,10 @@ namespace Locadora.Web.Controllers
         }
 
         [NonAction]
-        partial void EditarOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Locadora.Domain.TUser model);
+        partial void EditarOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, Locadora.Domain.TClient model);
 
         [NonAction]
-        public override System.Web.Mvc.ActionResult Editar(Locadora.Domain.TUser model)
+        public override System.Web.Mvc.ActionResult Editar(Locadora.Domain.TClient model)
         {
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Editar);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
@@ -238,6 +258,29 @@ namespace Locadora.Web.Controllers
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "diff", diff);
             ExcluirOverride(callInfo, id, diff);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ListarGeneroOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ListarGenero(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ListarGenero);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ListarGeneroOverride(callInfo, id);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void LogoutOverride(T4MVC_System_Web_Mvc_ActionResult callInfo);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult Logout()
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Logout);
+            LogoutOverride(callInfo);
             return callInfo;
         }
 

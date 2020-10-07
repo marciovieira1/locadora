@@ -1,15 +1,15 @@
-﻿@model List<TClient>
+﻿@model List<TMovie>
 @{
     ViewBag.Title = "Index";
-    Layout = "~/Views/Shared/_Layout.cshtml";
+    Layout = "~/Areas/Admin/Views/Shared/_Layout.cshtml";
 }
 <h2>
-    Clientes
+    Filmes
 </h2>
 <div class="row" style="margin: 30px 0; text-align: right">
     <div class="col-lg-12 text-right">
         <a class="btn btn-primary btn-lg" data-toggle="tooltip" title="Cadastrar"
-           href="@Url.Action(MVC.Clientes.Cadastrar())">
+           href="@Url.Action(MVC.Admin.Filmes.Cadastrar())">
             <i class="fas fa-plus"></i> Cadastrar
         </a>
     </div>
@@ -17,27 +17,39 @@
 <div class="row">
     <div class="col-lg-12">
         <table class="table table-bordered table-hover tablesorter table-striped">
-            <thead class="thead-dark">
+            <thead>
                 <tr>
-                    <th scope="col" class="header">
+                    <th class="header">
+                        Código
+                    </th>
+                    <th class="header">
                         Nome
                     </th>
-                    <th scope="col" class="header">
-                        Email
+                    <th class="header">
+                        Gêneros
                     </th>
-                    <th scope="col" class="header">
-                        Telefone
+                    <th class="header">
+                        Duração
                     </th>
-                    <th scope="col" class="header">
-                        Login
+                    <th class="header">
+                        Formato
                     </th>
-                    <th scope="col" class="header">
-                        Preferências
+                    <th class="header">
+                        Tipo
                     </th>
-                    <th scope="col" class="header">
-                        Perfil
+                    <th class="header">
+                        Ativo
                     </th>
-                    <th scope="col" class="header text-center">
+                    <th class="header">
+                        Criado em
+                    </th>
+                    <th class="header">
+                        Estoque
+                    </th>
+                    <th class="header">
+                        Preço
+                    </th>
+                    <th class="header text-center">
                         Ação
                     </th>
                 </tr>
@@ -49,33 +61,45 @@
                     {
                 <tr>
                     <td>
+                        @item.Code
+                    </td>
+                    <td>
                         @item.Name
                     </td>
                     <td>
-                        @item.Email
-                    </td>
-                    <td>
-                        @item.Telephone
-                    </td>
-                    <td>
-                        @item.Login
-                    </td>
-                    <td>
-                        @foreach (var genero in item.TPreferences)
+                        @foreach (var genero in item.TMovieCategories)
                         {
                             <span>- @genero.Category.Name</span>
                         }
                     </td>
                     <td>
-                        @item.EnumProfileClient
+                        @item.Duration
+                    </td>
+                    <td>
+                        @item.EnumFormatMovie.Description()
+                    </td>
+                    <td>
+                        @item.EnumTypeMovie.Description()
+                    </td>
+                    <td>
+                        @(item.IsActive ? "Sim" : "Não")
+                    </td>
+                    <td>
+                        @item.Date.DayMonthAndYear()
+                    </td>
+                    <td>
+                        @item.Stock
+                    </td>
+                    <td>
+                        @item.Value
                     </td>
                     <td class="text-center">
                         <a class="btn btn-primary btn-xs" data-toggle="tooltip" title="Editar"
-                           href="@Url.Action(MVC.Clientes.Editar(item.Id))">
+                           href="@Url.Action(MVC.Admin.Filmes.Editar(item.Id))">
                             <i class="fas fa-pencil"></i> Editar
                         </a>
                         <button type="button" class="btn btn-danger btn-xs ajax-modal" data-toggle="tooltip" title="Excluir"
-                                href="@Url.Action(MVC.Clientes.Excluir(item.Id))">
+                                href="@Url.Action(MVC.Admin.Filmes.Excluir(item.Id))">
                             <i class="fas fa-trash"></i> Excluir
                         </button>
                     </td>

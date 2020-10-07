@@ -174,15 +174,31 @@
     <Compile Include="Admin.BaseController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin.ClientesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.FilmesController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
+    <Compile Include="Admin.GenerosController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Admin.HomeController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Admin.SharedController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
+    <Compile Include="Admin.UsuariosController.generated.cs">
+      <DependentUpon>T4MVC.tt</DependentUpon>
+    </Compile>
     <Compile Include="Areas\Admin\AdminAreaRegistration.cs" />
     <Compile Include="Areas\Admin\Controllers\BaseController.cs" />
+    <Compile Include="Areas\Admin\Controllers\ClientesController.cs" />
+    <Compile Include="Areas\Admin\Controllers\FilmesController .cs" />
+    <Compile Include="Areas\Admin\Controllers\GenerosController.cs" />
     <Compile Include="Areas\Admin\Controllers\HomeController.cs" />
+    <Compile Include="Areas\Admin\Controllers\UsuariosController.cs" />
     <Compile Include="BaseController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
@@ -190,19 +206,10 @@
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
     <Compile Include="Controllers\BaseController.cs" />
-    <Compile Include="Controllers\UsuariosController.cs" />
-    <Compile Include="Controllers\FilmesController .cs" />
-    <Compile Include="Controllers\GenerosController.cs" />
     <Compile Include="Controllers\ClientesController.cs" />
     <Compile Include="Controllers\HomeController.cs" />
     <Compile Include="Controllers\MailController.cs" />
     <Compile Include="Controllers\SystemController.cs" />
-    <Compile Include="FilmesController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="GenerosController.generated.cs">
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
     <Compile Include="Global.asax.cs">
       <DependentUpon>Global.asax</DependentUpon>
     </Compile>
@@ -227,9 +234,6 @@
     <Compile Include="T4MVC.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
-      <DependentUpon>T4MVC.tt</DependentUpon>
-    </Compile>
-    <Compile Include="UsuariosController.generated.cs">
       <DependentUpon>T4MVC.tt</DependentUpon>
     </Compile>
   </ItemGroup>
@@ -271,6 +275,28 @@
     <Content Include="Areas\Admin\Views\Shared\_Layout.cshtml" />
     <Content Include="Areas\Admin\Views\Shared\_Layout_Login.cshtml" />
     <Content Include="Areas\Admin\Views\Home\login.cshtml" />
+    <Content Include="Areas\Admin\Views\Generos\_excluir.cshtml" />
+    <Content Include="Areas\Admin\Views\Generos\_form.cshtml" />
+    <Content Include="Areas\Admin\Views\Generos\cadastrar.cshtml" />
+    <Content Include="Areas\Admin\Views\Generos\editar.cshtml" />
+    <Content Include="Areas\Admin\Views\Generos\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Usuarios\_excluir.cshtml" />
+    <Content Include="Areas\Admin\Views\Usuarios\_form.cshtml" />
+    <Content Include="Areas\Admin\Views\Usuarios\cadastrar.cshtml" />
+    <Content Include="Areas\Admin\Views\Usuarios\editar.cshtml" />
+    <Content Include="Areas\Admin\Views\Usuarios\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Filmes\_excluir.cshtml" />
+    <Content Include="Areas\Admin\Views\Filmes\_form.cshtml" />
+    <Content Include="Areas\Admin\Views\Filmes\_listar-genero.cshtml" />
+    <Content Include="Areas\Admin\Views\Filmes\cadastrar.cshtml" />
+    <Content Include="Areas\Admin\Views\Filmes\editar.cshtml" />
+    <Content Include="Areas\Admin\Views\Filmes\Index.cshtml" />
+    <Content Include="Areas\Admin\Views\Clientes\_excluir.cshtml" />
+    <Content Include="Areas\Admin\Views\Clientes\_form.cshtml" />
+    <Content Include="Areas\Admin\Views\Clientes\_listar-genero.cshtml" />
+    <Content Include="Areas\Admin\Views\Clientes\cadastrar.cshtml" />
+    <Content Include="Areas\Admin\Views\Clientes\editar.cshtml" />
+    <Content Include="Areas\Admin\Views\Clientes\Index.cshtml" />
     <None Include="T4MVC.tt.settings.xml" />
     <Content Include="Scripts\toastr.js" />
     <Content Include="Web.config">
@@ -280,11 +306,6 @@
     <Content Include="Views\Web.config">
       <SubType>Designer</SubType>
     </Content>
-    <Content Include="Views\Usuarios\Index.cshtml" />
-    <Content Include="Views\Usuarios\cadastrar.cshtml" />
-    <Content Include="Views\Usuarios\editar.cshtml" />
-    <Content Include="Views\Usuarios\_form.cshtml" />
-    <Content Include="Views\Usuarios\_excluir.cshtml" />
     <Content Include="Views\Shared\_Layout - Copy.cshtml" />
   </ItemGroup>
   <ItemGroup>
@@ -302,27 +323,11 @@
     <Content Include="Views\Shared\Error.cshtml" />
     <None Include="T4MVC.tt.hooks.t4" />
     <Content Include="Views\Home\Realizar.cshtml" />
-    <Content Include="Views\Filmes\Index.cshtml" />
-    <Content Include="Views\Filmes\cadastrar.cshtml" />
-    <Content Include="Views\Filmes\editar.cshtml" />
-    <Content Include="Views\Filmes\_form.cshtml" />
-    <Content Include="Views\Generos\Index.cshtml" />
-    <Content Include="Views\Generos\cadastrar.cshtml" />
-    <Content Include="Views\Generos\_form.cshtml" />
-    <Content Include="Views\Filmes\_listar-genero.cshtml" />
-    <Content Include="Views\Filmes\_excluir.cshtml" />
-    <Content Include="Views\Clientes\Index.cshtml" />
-    <Content Include="Views\Clientes\_form.cshtml" />
-    <Content Include="Views\Clientes\cadastrar.cshtml" />
-    <Content Include="Views\Clientes\editar.cshtml" />
-    <Content Include="Views\Clientes\_excluir.cshtml" />
-    <Content Include="Views\Generos\editar.cshtml" />
-    <Content Include="Views\Generos\_excluir.cshtml" />
-    <Content Include="Views\Clientes\_listar-genero.cshtml" />
     <Content Include="Views\Shared\_alerta.cshtml" />
     <Content Include="Views\Home\_form.cshtml" />
     <Content Include="Views\Clientes\login.cshtml" />
     <Content Include="Views\Clientes\cliente_filmes.cshtml" />
+    <Content Include="Views\Clientes\Reservar.cshtml" />
     <None Include="Views\Shared\_Confirm.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>

@@ -44,10 +44,14 @@
                 </div>
             </div>
         </div>
-        <a class="btn btn-danger btn-lg btn_login_logout" data-toggle="tooltip" title="Sair"
-           href="@Url.Action(MVC.Clientes.Logout())">
-            <i class="fas fa-sign-out-alt"></i> Sair
-        </a>
+        @if(ViewBag.Cliente != null)
+        {
+            <a class="btn btn-danger btn-lg btn_login_logout" data-toggle="tooltip" title="Sair"
+               href="@Url.Action(MVC.Clientes.Logout())">
+                <i class="fas fa-sign-out-alt"></i> Sair
+            </a>
+        }
+
     </div>
     <div class="container">
         @RenderBody()
