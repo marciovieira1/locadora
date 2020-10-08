@@ -95,6 +95,9 @@
     <Compile Include="20200924141647_alterar_estrutura.cs" />
     <Compile Include="20201002140035_Untitled.cs" />
     <Compile Include="20201006164239_altera_produto.cs" />
+    <Compile Include="20201008105948_altera_produto.cs" />
+    <Compile Include="20201008115108_itens_excluir.cs" />
+    <Compile Include="20201008115317_itens_incluir.cs" />
   </ItemGroup>
   <ItemGroup>
     <ProjectReference Include="..\Model\Model.csproj">

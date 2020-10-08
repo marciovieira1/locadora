@@ -21,7 +21,7 @@ namespace Locadora.Domain
         public virtual Int32 Stock { get; set; } 
         public virtual DateTime Date { get; set; } 
         public virtual Boolean IsActive { get; set; } 
-        public virtual Double? Value { get; set; } 
+        public virtual Decimal? Value { get; set; } 
 
 
         public virtual ICollection<TIten> TItens { get; set; } 

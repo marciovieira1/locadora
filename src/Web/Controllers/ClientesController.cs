@@ -103,5 +103,9 @@ namespace Locadora.Web.Controllers
                 return HandleViewException(model, ex);
             }
         }
+        public ActionResult GetMovies(string term)
+        {
+            return Json(TMovie.List(x => x.Name.Contains(term)).Select(a => new { label = a.Name }), JsonRequestBehavior.AllowGet);
+        }
     }
 }

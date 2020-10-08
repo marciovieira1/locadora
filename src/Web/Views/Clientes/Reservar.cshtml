@@ -29,6 +29,11 @@
                 @this.AutoSelect(x => x.Movie).Class("form-control").FirstOption("", "Selecione uma opção")
                 @Html.ValidationMessageFor(x => x.Movie)
             </div>
+
+            <div class="col-lg-12">
+                <input type="text" name="FilmesSelecionados" id="autocomplete" />
+            </div>
+
             <div class="col-md-12 text-center" style="margin-top: 15px;">
                 <button type="submit" class="btn btn-primary btn-lg">
                     <i class="far fa-sign-out-alt"></i> Salvar
@@ -66,11 +71,9 @@
         }
     </div>
 </div>
-
 <script type="text/javascript">
     $(function () {
         $("form").validate();
-
         $("select#Movie").change(function () {
             var id = $(this).val();
             $.post("@Url.Action(MVC.Clientes.ListarFilmes())", { id: id }, function (data) {
@@ -80,10 +83,16 @@
         });
 
         $("button.excluir-filme").livequery("click", function () {
+            
             var id = $(this).parents("item-filme").find("id-filme").val();
             $(this).parents("tr.item-filme").remove();
             $("select#Movie").append("<option value=" + id + ">" + $(this).data("nome") + "</option>");
         });
-
+        //$('#autocomplete').autocomplete({
+        //    lookup: '',
+        //    onSelect: function (suggestion) {
+        //        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
+        //    }
+        //});
     });
 </script>
