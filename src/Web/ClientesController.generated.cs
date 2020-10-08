@@ -61,6 +61,12 @@ namespace Locadora.Web.Controllers
 
         [NonAction]
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ListarFilmes()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ListarFilmes);
+        }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public virtual System.Web.Mvc.ActionResult Login()
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
@@ -81,6 +87,7 @@ namespace Locadora.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNamesClass
         {
+            public readonly string ListarFilmes = "ListarFilmes";
             public readonly string Login = "Login";
             public readonly string Logout = "Logout";
             public readonly string cliente_filmes = "cliente_filmes";
@@ -90,6 +97,7 @@ namespace Locadora.Web.Controllers
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public class ActionNameConstants
         {
+            public const string ListarFilmes = "ListarFilmes";
             public const string Login = "Login";
             public const string Logout = "Logout";
             public const string cliente_filmes = "cliente_filmes";
@@ -97,6 +105,14 @@ namespace Locadora.Web.Controllers
         }
 
 
+        static readonly ActionParamsClass_ListarFilmes s_params_ListarFilmes = new ActionParamsClass_ListarFilmes();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ListarFilmes ListarFilmesParams { get { return s_params_ListarFilmes; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ListarFilmes
+        {
+            public readonly string id = "id";
+        }
         static readonly ActionParamsClass_Login s_params_Login = new ActionParamsClass_Login();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ActionParamsClass_Login LoginParams { get { return s_params_Login; } }
@@ -124,10 +140,12 @@ namespace Locadora.Web.Controllers
             public _ViewNamesClass ViewNames { get { return s_ViewNames; } }
             public class _ViewNamesClass
             {
+                public readonly string _listar_filmes = "_listar-filmes";
                 public readonly string cliente_filmes = "cliente_filmes";
                 public readonly string login = "login";
                 public readonly string Reservar = "Reservar";
             }
+            public readonly string _listar_filmes = "~/Views/Clientes/_listar-filmes.cshtml";
             public readonly string cliente_filmes = "~/Views/Clientes/cliente_filmes.cshtml";
             public readonly string login = "~/Views/Clientes/login.cshtml";
             public readonly string Reservar = "~/Views/Clientes/Reservar.cshtml";
@@ -138,6 +156,18 @@ namespace Locadora.Web.Controllers
     public partial class T4MVC_ClientesController : Locadora.Web.Controllers.ClientesController
     {
         public T4MVC_ClientesController() : base(Dummy.Instance) { }
+
+        [NonAction]
+        partial void ListarFilmesOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, int id);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ListarFilmes(int id)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ListarFilmes);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "id", id);
+            ListarFilmesOverride(callInfo, id);
+            return callInfo;
+        }
 
         [NonAction]
         partial void LoginOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string returnUrl);

@@ -4,24 +4,29 @@
     Layout = "~/Views/Shared/_Layout.cshtml";
 }
 <div class="hero-unit">
-    <h1>Cliente: @ViewBag.Cliente.Name</h1>
+
+    <h1 style="display: flex; align-items: center; justify-content: center">Cliente: @ViewBag.Cliente.Name</h1>
     <hr />
     <div class="row">
         @using (Html.BeginForm(MVC.Clientes.Reservar(), FormMethod.Post))
         {
             <div class="col-lg-12">
+                @this.Hidden(x => x.Client).Class("form-control").Value(ViewBag.Cliente.Id)
+                @Html.ValidationMessageFor(x => x.Client)
+            </div>
+            <div class="col-lg-12">
                 @this.Label(x => x.Withdraw).Class("control-label").Value("Retirada:")
-                @this.DatePicker(x => x.Withdraw).Class("required form-control")
+                @this.DatePicker(x => x.Withdraw).Class("required form-control").Value(DateTime.Now.Date)
                 @Html.ValidationMessageFor(x => x.Withdraw)
             </div>
             <div class="col-lg-12">
                 @this.Label(x => x.Devolution).Class("control-label").Value("Devolução:")
-                @this.DatePicker(x => x.Devolution).Class("required form-control")
+                @this.DatePicker(x => x.Devolution).Class("required form-control").Value(DateTime.Now.Date.AddDays(1))
                 @Html.ValidationMessageFor(x => x.Devolution)
             </div>
             <div class="col-lg-12">
                 @this.Label(x => x.Movie).Class("control-label").Value("Filmes:")
-                @this.AutoSelect(x => x.Movie).Class("required form-control")
+                @this.AutoSelect(x => x.Movie).Class("form-control").FirstOption("", "Selecione uma opção")
                 @Html.ValidationMessageFor(x => x.Movie)
             </div>
             <div class="col-md-12 text-center" style="margin-top: 15px;">
@@ -29,106 +34,56 @@
                     <i class="far fa-sign-out-alt"></i> Salvar
                 </button>
             </div>
+            <hr />
+            <h3>
+                Filmes selecionados:
+            </h3>
+            <div class="col-lg-12">
+                <table class="table table-bordered table-hover tablesorter table-striped tblFilmes">
+                    <thead>
+                        <tr>
+                            <th class="header">
+                                Código
+                            </th>
+                            <th class="header">
+                                Nome
+                            </th>
+                            <th class="header">
+                                Preço
+                            </th>
+                            <th class="header">
+                                Quantidade
+                            </th>
+                            <th class="header text-center">
+                                Ação
+                            </th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                    </tbody>
+                </table>
+            </div>
         }
     </div>
 </div>
 
+<script type="text/javascript">
+    $(function () {
+        $("form").validate();
 
-<!--<div class="row">
-    <div class="col-lg-12">
-        <table class="table table-bordered table-hover tablesorter table-striped">
-            <thead>
-                <tr>
-                    <th class="header">
-                        Código
-                    </th>
-                    <th class="header">
-                        Nome
-                    </th>
-                    <th class="header">
-                        Gêneros
-                    </th>
-                    <th class="header">
-                        Duração
-                    </th>
-                    <th class="header">
-                        Formato
-                    </th>
-                    <th class="header">
-                        Tipo
-                    </th>
-                    <th class="header">
-                        Ativo
-                    </th>
-                    <th class="header">
-                        Criado em
-                    </th>
-                    <th class="header">
-                        Estoque
-                    </th>
-                    <th class="header text-center">
-                        Ação
-                    </th>
-                </tr>
-            </thead>
-            <tbody>
-               @* @if (Model.Count > 0)
-                {
-                    foreach (var item in Model)
-                    {
-                        <tr>
-                            <td>
-                                @item.Code
-                            </td>
-                            <td>
-                                @item.Name
-                            </td>
-                            <td>
-                                @foreach (var genero in item.TMovieCategories)
-                                {
-                                    <span>- @genero.Category.Name</span>
-                                }
-                            </td>
-                            <td>
-                                @item.Duration
-                            </td>
-                            <td>
-                                @item.EnumFormatMovie.Description()
-                            </td>
-                            <td>
-                                @item.EnumTypeMovie.Description()
-                            </td>
-                            <td>
-                                @(item.IsActive ? "Sim" : "Não")
-                            </td>
-                            <td>
-                                @item.Date.DayMonthAndYear()
-                            </td>
-                            <td>
-                                @item.Stock
-                            </td>
-                            <td class="text-center">
-                                <a class="btn btn-primary btn-xs" data-toggle="tooltip" title="Reservar"
-                                   href="@Url.Action(MVC.Admin.Filmes.Editar(item.Id))">
-                                    <i class="fas fa-thumbtack"></i> Reservar
-                                </a>-->
-                                @*<button type="button" class="btn btn-danger btn-xs ajax-modal" data-toggle="tooltip" title="Excluir"
-                                            href="@Url.Action(MVC.Filmes.Excluir(item.Id))">
-                                        <i class="fas fa-trash"></i> Excluir
-                                    </button>*@
-                            <!--</td>
-                        </tr>
-                    }
-                }
-                else
-                {
-                    <tr>
-                        <td colspan="15" class="text-center">
-                            <strong>Nenhum registro encontrado</strong>
-                        </td>
-                    </tr>
-                }
-            </tbody>
-        </table>
-    </div>
-</div>-->
+        $("select#Movie").change(function () {
+            var id = $(this).val();
+            $.post("@Url.Action(MVC.Clientes.ListarFilmes())", { id: id }, function (data) {
+                $("table.tblFilmes").append(data);
+                $("select#Movie option[value = " + id + "]").remove();
+            });
+        });
+
+        $("button.excluir-filme").livequery("click", function () {
+            var id = $(this).parents("item-filme").find("id-filme").val();
+            $(this).parents("tr.item-filme").remove();
+            $("select#Movie").append("<option value=" + id + ">" + $(this).data("nome") + "</option>");
+        });
+
+    });
+</script>

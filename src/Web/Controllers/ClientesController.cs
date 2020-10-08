@@ -15,6 +15,12 @@ namespace Locadora.Web.Controllers
 {
     public partial class ClientesController : BaseController
     {
+        public virtual ActionResult ListarFilmes(int id)
+        {
+            var filmes = TMovie.Load(id);
+            return PartialView("_listar-filmes", filmes);
+        }
+
         public virtual ActionResult Login(string returnUrl)
         {
             var login = new Login();
@@ -58,7 +64,7 @@ namespace Locadora.Web.Controllers
             }
             return RedirectToAction(MVC.Clientes.Login());
         }
-         
+    
         [RequiresAuthorization]
         public virtual ActionResult cliente_filmes()
         {
@@ -85,9 +91,17 @@ namespace Locadora.Web.Controllers
         [HttpPost]
         public virtual ActionResult Reservar(TReservation model)
         {
-            //var reserva = new TReservation();
-            //ViewBag.Movie = TMovie.ListAll().ToSelectList(x => x.Id, x => x.Name);
-            return View();
+            try
+            {
+                model.Save();
+                TIten.SaveMovies(model);
+                TempData["Alerta"] = new Alert("success", "Reserva realizada com sucesso");
+                return RedirectToAction("cliente_filmes");
+            }
+            catch (SimpleValidationException ex)
+            {
+                return HandleViewException(model, ex);
+            }
         }
     }
 }

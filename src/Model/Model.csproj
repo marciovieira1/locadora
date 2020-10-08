@@ -99,6 +99,7 @@
     <Compile Include="Domain\EnumHelper.cs" />
     <Compile Include="Domain\Login.cs" />
     <Compile Include="Domain\Subdomain.cs" />
+    <Compile Include="Domain\TReservation.cs" />
     <Compile Include="Domain\TUser.cs" />
     <Compile Include="Domain\TClient.cs" />
     <Compile Include="Domain\TMovie.cs" />

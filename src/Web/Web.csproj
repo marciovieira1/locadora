@@ -328,6 +328,7 @@
     <Content Include="Views\Clientes\login.cshtml" />
     <Content Include="Views\Clientes\cliente_filmes.cshtml" />
     <Content Include="Views\Clientes\Reservar.cshtml" />
+    <Content Include="Views\Clientes\_listar-filmes.cshtml" />
     <None Include="Views\Shared\_Confirm.cshtml" />
     <Content Include="Views\Shared\_Layout.cshtml" />
   </ItemGroup>

@@ -1,0 +1,14 @@
+﻿@model TMovie
+<tr class="item-filme">
+    <td>@Model.Id</td>
+    <td>@Model.Name</td>
+    <td>@Model.Value</td>
+    <td><input type="number" name="Quantities" class="box-numerico" value="1" /></td>
+    <td>
+        <input type="hidden" name="Movies" class="id-filme" value="@Model.Id" />
+        <button type="button" class="btn btn-danger btn-xs ajax-modal excluir-filme" data-toggle="tooltip" title="Excluir"
+                href="">
+            <i class="fas fa-trash"></i> Excluir
+        </button>
+    </td>
+</tr>

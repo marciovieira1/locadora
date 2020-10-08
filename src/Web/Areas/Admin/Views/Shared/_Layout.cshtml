@@ -44,15 +44,16 @@
                         <li><a href="@Url.Action(MVC.Admin.Usuarios.Index())">Usuários</a></li>
                     </ul>
                 </div>
+                @if (ViewBag.Usuario != null)
+                {
+                    <a class="btn btn-danger btn-lg" data-toggle="tooltip" title="Sair"
+                       href="@Url.Action(MVC.Admin.Home.Logout())">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                }
             </div>
         </div>
-        @if (ViewBag.Usuario != null)
-        {
-            <a class="btn btn-danger btn-lg btn_login_logout" data-toggle="tooltip" title="Sair"
-               href="@Url.Action(MVC.Admin.Home.Logout())">
-                <i class="fas fa-sign-out-alt"></i> Sair
-            </a>
-        }
+
     </div>
     <div class="container">
         @RenderBody()

@@ -42,17 +42,17 @@
                         <li><a href="@Url.Action(MVC.Admin.Home.Index())">Admin</a></li>
                     </ul>
                 </div>
+                @if (ViewBag.Cliente != null)
+                {
+                    <a class="btn btn-danger btn-lg " data-toggle="tooltip" title="Sair"
+                       href="@Url.Action(MVC.Clientes.Logout())">
+                        <i class="fas fa-sign-out-alt"></i> Sair
+                    </a>
+                }
             </div>
         </div>
-        @if(ViewBag.Cliente != null)
-        {
-            <a class="btn btn-danger btn-lg btn_login_logout" data-toggle="tooltip" title="Sair"
-               href="@Url.Action(MVC.Clientes.Logout())">
-                <i class="fas fa-sign-out-alt"></i> Sair
-            </a>
-        }
-
     </div>
+
     <div class="container">
         @RenderBody()
     </div>

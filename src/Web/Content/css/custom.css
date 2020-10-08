@@ -72,5 +72,5 @@ h2.titulo-form {
 }
 .btn_login_logout{
     display:flex;
-    align-items:end;
+    align-content:end
 }
