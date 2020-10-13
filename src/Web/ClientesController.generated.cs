@@ -71,6 +71,12 @@ namespace Locadora.Web.Controllers
         {
             return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Login);
         }
+        [NonAction]
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public virtual System.Web.Mvc.ActionResult ListarFilmesSelecionados()
+        {
+            return new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ListarFilmesSelecionados);
+        }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
         public ClientesController Actions { get { return MVC.Clientes; } }
@@ -92,6 +98,7 @@ namespace Locadora.Web.Controllers
             public readonly string Logout = "Logout";
             public readonly string cliente_filmes = "cliente_filmes";
             public readonly string Reservar = "Reservar";
+            public readonly string ListarFilmesSelecionados = "ListarFilmesSelecionados";
         }
 
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -102,6 +109,7 @@ namespace Locadora.Web.Controllers
             public const string Logout = "Logout";
             public const string cliente_filmes = "cliente_filmes";
             public const string Reservar = "Reservar";
+            public const string ListarFilmesSelecionados = "ListarFilmesSelecionados";
         }
 
 
@@ -129,6 +137,14 @@ namespace Locadora.Web.Controllers
         public class ActionParamsClass_Reservar
         {
             public readonly string model = "model";
+        }
+        static readonly ActionParamsClass_ListarFilmesSelecionados s_params_ListarFilmesSelecionados = new ActionParamsClass_ListarFilmesSelecionados();
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public ActionParamsClass_ListarFilmesSelecionados ListarFilmesSelecionadosParams { get { return s_params_ListarFilmesSelecionados; } }
+        [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
+        public class ActionParamsClass_ListarFilmesSelecionados
+        {
+            public readonly string term = "term";
         }
         static readonly ViewsClass s_views = new ViewsClass();
         [GeneratedCode("T4MVC", "2.0"), DebuggerNonUserCode]
@@ -235,6 +251,18 @@ namespace Locadora.Web.Controllers
             var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.Reservar);
             ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "model", model);
             ReservarOverride(callInfo, model);
+            return callInfo;
+        }
+
+        [NonAction]
+        partial void ListarFilmesSelecionadosOverride(T4MVC_System_Web_Mvc_ActionResult callInfo, string term);
+
+        [NonAction]
+        public override System.Web.Mvc.ActionResult ListarFilmesSelecionados(string term)
+        {
+            var callInfo = new T4MVC_System_Web_Mvc_ActionResult(Area, Name, ActionNames.ListarFilmesSelecionados);
+            ModelUnbinderHelpers.AddRouteValues(callInfo.RouteValueDictionary, "term", term);
+            ListarFilmesSelecionadosOverride(callInfo, term);
             return callInfo;
         }
 

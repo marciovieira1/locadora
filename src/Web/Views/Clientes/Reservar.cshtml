@@ -31,7 +31,7 @@
             </div>
 
             <div class="col-lg-12">
-                <input type="text" name="FilmesSelecionados" id="autocomplete" />
+                <input type="text" id="FilmesSelecionados" />
             </div>
 
             <div class="col-md-12 text-center" style="margin-top: 15px;">
@@ -71,10 +71,45 @@
         }
     </div>
 </div>
+<link rel="stylesheet" href="//code.jquery.com/ui/1.11.2/themes/smoothness/jquery-ui.css">
+<script src="//code.jquery.com/ui/1.11.2/jquery-ui.js"></script>
 <script type="text/javascript">
+    $(document).ready(function () {
+        $('#FilmesSelecionados').autocomplete({
+            source: function (request, response) {
+                $.ajax({
+                    data: { term: request.term },
+                    type: "GET",
+                    dataType: "json",
+                    url: "@Url.Action(MVC.Clientes.ListarFilmesSelecionados())",
+                    success: function (data) {
+                        response($.map(data, function (item) {
+                            return {
+                                label: item.label,
+                                value: item.label
+                            };
+                        }))
+                    },
+                    error: function (xhr, status, error) {
+                        alert("função com erro")
+                    }
+                });
+            }@*,
+            select: function (event, ui) {
+                $("#FilmesSelecionados").change(function () {
+                    var id = $(this).val();
+                    $.post("@Url.Action(MVC.Clientes.ListarFilmes())", { id: id }, function (data) {
+                         $("table.tblFilmes").append(data);
+                     });
+                 });
+                //alert("Filme selecionado:" + ui.item.label);
+            }*@
+        });
+    });
     $(function () {
         $("form").validate();
         $("select#Movie").change(function () {
+        //$("input#FilmesSelecionados").Change(function () {
             var id = $(this).val();
             $.post("@Url.Action(MVC.Clientes.ListarFilmes())", { id: id }, function (data) {
                 $("table.tblFilmes").append(data);
@@ -83,16 +118,10 @@
         });
 
         $("button.excluir-filme").livequery("click", function () {
-            
+
             var id = $(this).parents("item-filme").find("id-filme").val();
             $(this).parents("tr.item-filme").remove();
             $("select#Movie").append("<option value=" + id + ">" + $(this).data("nome") + "</option>");
         });
-        //$('#autocomplete').autocomplete({
-        //    lookup: '',
-        //    onSelect: function (suggestion) {
-        //        alert('You selected: ' + suggestion.value + ', ' + suggestion.data);
-        //    }
-        //});
     });
 </script>

@@ -125,6 +125,7 @@ namespace Links
         }
     
         public static readonly string jquery_1_7_2_min_js = Url("jquery-1.7.2.min.js");
+        public static readonly string jquery_autocomplete_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/jquery.autocomplete.min.js") ? Url("jquery.autocomplete.min.js") : Url("jquery.autocomplete.js");
         public static readonly string jquery_livequery_min_js = Url("jquery.livequery.min.js");
         public static readonly string jquery_validate_min_js = Url("jquery.validate.min.js");
         public static readonly string master_js = T4MVCHelpers.IsProduction() && T4Extensions.FileExists(UrlPath + "/master.min.js") ? Url("master.min.js") : Url("master.js");
@@ -200,6 +201,7 @@ namespace Links
             public static class Assets
             {
                 public static readonly string jquery_1_7_2_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery-1.7.2.min.js"); 
+                public static readonly string jquery_autocomplete_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.autocomplete.js"); 
                 public static readonly string jquery_livequery_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.livequery.min.js"); 
                 public static readonly string jquery_validate_min_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/jquery.validate.min.js"); 
                 public static readonly string master_js = T4MVCHelpers.ProcessAssetPath("~/Scripts/master.js"); 
